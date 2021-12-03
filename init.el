@@ -99,8 +99,8 @@
 ;; Set path to racer binary
 (setq racer-cmd "/Users/ycy/.cargo/bin/racer")
 
-;; Set path to rust src directory
-(setq racer-rust-src-path "/Users/ycy/.rustup/toolchains/stable-aarch64-apple-darwin/lib/rustlib/src/rust/src")
+;; Set rust-src path
+(setq racer-rust-src-path "/Users/ycy/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/library")
 
 ;; Load rust-mode when you open `.rs` files
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))

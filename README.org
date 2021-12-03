@@ -1,0 +1,37 @@
+* .emacs.d
+** Installation
+#+begin_src shell
+  cd $HOME
+  git clone https://github.com/kabu1204/.emacs.d.git
+#+end_src
+** Feature
+This .emacs.d already configures *rust-mode*, *company*, *racer*, *Cider*, *clojure-mode*, *flycheck*, which is mainly for myself to learn **Rust** and **Clojure**.
+If you are working with rust or clojure, this is for you.
+*** Rust(optional)
+Except for cloing this repo, you may also need to:
+1. Install Rust
+   #+begin_center shell
+     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   #+end_center
+2. Install rust crate: racer (which is needed by racer-mode)
+   #+begin_center shell
+     rustup toolchain add nightly
+     rustup default nightly
+     cargo install racer
+     rustup default stable
+   #+end_center
+3. Install rust-src
+   #+begin_center shell
+     rustup component add rust-src
+   #+end_center
+4. Configure rust-src path
+   This step is not necessary, racer can detect the path automatically.
+   #+begin_center shell
+     echo $(rustc --print sysroot)/lib/rustlib/src/rust/library
+   #+end_center
+   then edit the init.el, probably around *lines 103*:
+   #+begin_center emacs-lisp
+     (setq racer-rust-src-path "what you just get by echo")
+   #+end_center
+*** Clojure(optional)
+Just follow the instruction from [[https://leiningen.org/][Leiningen]] to install lein executable.
