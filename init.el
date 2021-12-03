@@ -64,4 +64,5 @@
 (global-linum-mode 1)
 (setq linum-format "%d")
 
-;;default font
+;;org indent mode
+(setq org-startup-indented t)
