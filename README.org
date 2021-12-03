@@ -5,7 +5,7 @@
   git clone https://github.com/kabu1204/.emacs.d.git
 #+end_src
 ** Feature
-This .emacs.d already configures *rust-mode*, *company*, *racer*, *Cider*, *clojure-mode*, *flycheck*, which is mainly for myself to learn **Rust** and **Clojure**.
+This .emacs.d already configures *rust-mode*, *company*, *racer*, *Cider*, *clojure-mode*, *flycheck*, which is mainly for myself to learn **Rust** and **Clojure** .
 If you are working with rust or clojure, this is for you.
 *** Rust(optional)
 Except for cloing this repo, you may also need to:
@@ -19,6 +19,11 @@ Except for cloing this repo, you may also need to:
      rustup default nightly
      cargo install racer
      rustup default stable
+     which racer
+   #+end_src
+   then edit the init.el, probably around *line 101*:
+   #+begin_src emacs-lisp
+     (setq racer-cmd "what you just get from 'which racer'")
    #+end_src
 3. Install rust-src
    #+begin_src shell
@@ -29,7 +34,7 @@ Except for cloing this repo, you may also need to:
    #+begin_src shell
      echo $(rustc --print sysroot)/lib/rustlib/src/rust/library
    #+end_src
-   then edit the init.el, probably around *lines 103*:
+   then edit the init.el, probably around *line 103*:
    #+begin_src emacs-lisp
      (setq racer-rust-src-path "what you just get by echo")
    #+end_src

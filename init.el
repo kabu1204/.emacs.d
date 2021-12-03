@@ -10,6 +10,7 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes '(light-blue))
+ '(org-export-backends '(html icalendar latex md))
  '(package-selected-packages
    '(htmlize ox-pandoc better-defaults inf-clojure clojure-mode-extra-font-locking cider))
  '(tool-bar-mode nil))
@@ -100,7 +101,7 @@
 (setq racer-cmd "/Users/ycy/.cargo/bin/racer")
 
 ;; Set rust-src path
-(setq racer-rust-src-path "/Users/ycy/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/library")
+(setq racer-rust-src-path "/Users/ycy/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library")
 
 ;; Load rust-mode when you open `.rs` files
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
