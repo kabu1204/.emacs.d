@@ -38,5 +38,13 @@ Except for cloing this repo, you may also need to:
    #+begin_src emacs-lisp
      (setq racer-rust-src-path "what you just get by echo")
    #+end_src
+**** How to use?
+the key-binding is the same as [[https://github.com/racer-rust/emacs-racer#testing-your-setup][emacs-racer#testing-your-setup]]:
+1. delay or Press **TAB** for completion
+2. move the cursor on a symbol, **M-.** to jump to its definition
+   **M-,** to jump back
+3. **C-x 4 .** to jump to definition in a new window
+   **C-x 5 .** in a new frame
+
 *** Clojure(optional)
 Just follow the instruction from [[https://leiningen.org/][Leiningen]] to install lein executable.

@@ -1,5 +1,5 @@
-(setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu"   . "http://192.168.2.158/gnu/")
+                         ("melpa" . "http://192.168.2.158/melpa/")))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -12,7 +12,7 @@
  '(custom-enabled-themes '(light-blue))
  '(org-export-backends '(html icalendar latex md))
  '(package-selected-packages
-   '(htmlize ox-pandoc better-defaults inf-clojure clojure-mode-extra-font-locking cider))
+   '(magit htmlize ox-pandoc better-defaults inf-clojure clojure-mode-extra-font-locking cider))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -34,7 +34,8 @@
 		      racer
 		      flycheck
 		      flycheck-rust
-		      rust-mode))
+		      rust-mode
+		      magit))
 
 ;;manual pkg
 (add-to-list 'load-path "~/.emacs.d/manual-pkg/rust-mode")
@@ -84,6 +85,11 @@
 (setq org-src-tab-acts-natively t)
 ;;org mode src highlight
 (setq org-src-fontify-natively t)
+;;org todo keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "JACKING IN(j)" "|" "DONE(d@/!)" "DEPRECATED(g!)")))
+;;org todo add closed timestamp
+;;(setq org-log-done 'time)
 
 ;;;###autoload
 (with-eval-after-load "org"
@@ -105,28 +111,16 @@
 
 ;; Load rust-mode when you open `.rs` files
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-;; rust racer
+
+;; Setting up configurations when you load rust-mode
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 
-;; Setting up configurations when you load rust-mode
-(add-hook 'rust-mode-hook
+(add-hook 'racer-mode-hook #'company-mode)
 
-     '(lambda ()
-     ;; Enable racer
-     (racer-mode)
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
 
-     ;; Hook in racer with eldoc to provide documentation
-     (eldoc-mode)
-
-     ;; Use flycheck-rust in rust-mode
-     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-     ;; Use company-racer in rust mode
-     (set (make-local-variable 'company-backends) '(company-racer))
-
-     ;; Key binding to jump to method definition
-     (local-set-key (kbd "M-.") #'racer-find-definition)
-
-     ;; Key binding to auto complete and indent
-     (local-set-key (kbd "TAB") #'racer-complete-or-indent)))
+;; S-SPACE to set mark
+(global-set-key [?\S- ] 'set-mark-command)
